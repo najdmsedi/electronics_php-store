@@ -1,0 +1,200 @@
+/* Custom CSS for Electronics Store */
+
+/* General Styles */
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1 0 auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Header & Navigation */
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* Enhanced Navbar Styles */
+.navbar {
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+    transition: all 0.3s ease;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.85);
+    transition: color 0.2s ease;
+    position: relative;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #ffffff;
+}
+
+.navbar-dark .navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 50%;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.navbar-dark .navbar-nav .nav-link:hover::after {
+    width: 70%;
+}
+
+.dropdown-menu {
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.dropdown-item {
+    transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(225, 151, 19, 0.1);
+    padding-left: 1.5rem;
+}
+
+.navbar .form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(225, 151, 19, 0.25);
+}
+
+/* Product Cards */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Product Details */
+.product-price {
+    font-size: 1.5rem;
+    color: #007bff;
+    font-weight: bold;
+}
+
+/* Cart */
+.cart-item {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Footer */
+footer {
+    flex-shrink: 0;
+}
+
+/* Admin Dashboard */
+.dashboard-card {
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.dashboard-card .card-body {
+    padding: 20px;
+}
+
+/* Form Styles */
+.form-control:focus {
+    border-color: #e19713;
+    box-shadow: 0 0 0 0.25rem rgba(225, 151, 19, 0.25);
+}
+
+/* Theme Colors */
+.bg-theme {
+    background-color: #e19713 !important;
+}
+
+.text-theme {
+    color: #e19713 !important;
+}
+
+.text-icon {
+    color: #687281 !important;
+}
+
+.btn-theme {
+    background-color: #e19713;
+    border-color: #e19713;
+    color: white;
+}
+
+.btn-theme:hover {
+    background-color: #c98711;
+    border-color: #c98711;
+    color: white;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 4px;
+    padding: 8px 16px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-secondary {
+    border-color: #dee2e6;
+    color: #687281;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #f8f9fa;
+    color: #495057;
+    border-color: #dee2e6;
+}
+
+/* Override Bootstrap primary colors with gray */
+.bg-primary {
+    background-color: #6c757d !important; /* Bootstrap gray color */
+}
+
+.btn-primary {
+    background-color: #6c757d !important; /* Bootstrap gray color */
+    border-color: #6c757d !important;
+}
+
+.list-group-item.active {
+    background-color: #6c757d !important; /* Bootstrap gray color */
+    border-color: #6c757d !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .card-img-top {
+        height: 150px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+}

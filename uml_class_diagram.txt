@@ -1,0 +1,117 @@
+@startuml Electronics Store Class Diagram
+
+' Database Class
+class Database {
+  -host: string
+  -username: string
+  -password: string
+  -database: string
+  -conn: PDO
+  +__construct()
+  +getConnection(): PDO
+}
+
+' Session Class
+class Session {
+  +__construct()
+  +set(key: string, value: mixed): void
+  +get(key: string): mixed
+  +remove(key: string): void
+  +destroy(): void
+  +isLoggedIn(): boolean
+  +isAdmin(): boolean
+  +requireLogin(): void
+  +requireAdmin(): void
+}
+
+' User Class
+class User {
+  -conn: PDO
+  -table: string
+  +id: int
+  +username: string
+  +email: string
+  +password: string
+  +first_name: string
+  +last_name: string
+  +address: string
+  +phone: string
+  +is_admin: boolean
+  +created_at: datetime
+  +__construct()
+  +register(): boolean
+  +login(username: string, password: string): boolean
+  +getById(id: int): boolean
+  +update(): boolean
+}
+
+' Product Class
+class Product {
+  -conn: PDO
+  -table: string
+  +id: int
+  +category_id: int
+  +name: string
+  +description: string
+  +price: decimal
+  +stock_quantity: int
+  +image: string
+  +created_at: datetime
+  +updated_at: datetime
+  +__construct()
+  +getAll(): PDOStatement
+  +getByCategory(category_id: int): PDOStatement
+  +getById(id: int): boolean
+  +create(): boolean
+  +update(): boolean
+  +delete(): boolean
+  +search(keyword: string): PDOStatement
+}
+
+' Category Class
+class Category {
+  -conn: PDO
+  -table: string
+  +id: int
+  +name: string
+  +description: string
+  +image: string
+  +__construct()
+  +getAll(): PDOStatement
+  +getById(id: int): boolean
+  +create(): boolean
+  +update(): boolean
+  +delete(): boolean
+}
+
+' Order Class
+class Order {
+  -conn: PDO
+  -table: string
+  +id: int
+  +user_id: int
+  +total_amount: decimal
+  +status: string
+  +created_at: datetime
+  +updated_at: datetime
+  +__construct()
+  +create(): boolean
+  +addOrderItem(product_id: int, quantity: int, price: decimal): boolean
+  +getAll(): PDOStatement
+  +getByUser(user_id: int): PDOStatement
+  +getById(id: int): mixed
+  +getOrderItems(order_id: int): PDOStatement
+  +updateStatus(): boolean
+}
+
+' Relationships
+Database <-- User
+Database <-- Product
+Database <-- Category
+Database <-- Order
+
+User "1" -- "0..*" Order : places >
+Category "1" -- "0..*" Product : contains >
+Order "1" -- "1..*" Product : includes >
+
+@enduml
